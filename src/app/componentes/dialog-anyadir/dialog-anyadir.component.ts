@@ -33,7 +33,7 @@ export class DialogAnyadirComponent implements OnInit {
     let datos = new IncidenciaData(this.formularioAdd.controls['titulo'].value,this.formularioAdd.controls['descripcion'].value,
     this.formularioAdd.controls['prioridad'].value);
     let existe = true;
-    let id;
+    /*let id;
     while(existe){
       alert('Dentro del bucle');
       id = (Math.random()*1000000).toString();
@@ -42,12 +42,19 @@ export class DialogAnyadirComponent implements OnInit {
           existe=false;
         }
       }
-    }
+    }*/
     alert('Sale del bucle');
-    let inci = new Incidencia(/*id,*/ datos);
-    let incidenciaEnviar=new IncidenciaEnviar(/*id,*/ this.formularioAdd.controls['titulo'].value,this.formularioAdd.controls['descripcion'].value,
-    this.formularioAdd.controls['prioridad'].value);
-    this.incidenciaServicio.createIncidencia(/*inci*/incidenciaEnviar);
+    //let inci = new Incidencia(/*id,*/ datos);
+    let incid = {
+        //id :id,
+        title: this.formularioAdd.controls['titulo'].value,
+        description: this.formularioAdd.controls['descripcion'].value,
+        priority: this.formularioAdd.controls['prioridad'].value,
+        created: new Date()
+    };
+    //let incidenciaEnviar=new IncidenciaEnviar(/*id,*/ this.formularioAdd.controls['titulo'].value,this.formularioAdd.controls['descripcion'].value,
+    //this.formularioAdd.controls['prioridad'].value);
+    this.incidenciaServicio.createIncidencia(/*inci*/incid);
   }
 
 }
