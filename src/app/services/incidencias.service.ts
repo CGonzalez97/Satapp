@@ -14,7 +14,8 @@ export class IncidenciasService {
   }
 
   createPolicy(incidencia: Incidencia){
-    return this.firestore.collection('incidencias').add(incidencia);
+    alert('Entra al método del servicio');
+    return this.firestore.collection('incidencias').add(incidencia);    
   }
 
 

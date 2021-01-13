@@ -31,6 +31,7 @@ export class ListaIncidenciasComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogAnyadirComponent);
+    dialogRef.componentInstance.listaI = this.incidencias.data;
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

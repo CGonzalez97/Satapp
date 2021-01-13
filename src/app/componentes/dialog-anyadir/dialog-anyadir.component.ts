@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Incidencia,IncidenciaData } from '../../models/incidencia.model';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { IncidenciasService } from '../../services/incidencias.service';
 
 @Component({
   selector: 'app-dialog-anyadir',
@@ -8,9 +11,12 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class DialogAnyadirComponent implements OnInit {
 
-  formularioAdd:FormGroup;
 
-  constructor() {
+
+  formularioAdd:FormGroup;
+  listaI;
+
+  constructor(private incidenciaServicio:IncidenciasService) {
     this.formularioAdd = new FormGroup({
       titulo: new FormControl(),
       prioridad : new FormControl(),
@@ -20,6 +26,27 @@ export class DialogAnyadirComponent implements OnInit {
   };
 
   ngOnInit(): void {
+  }
+
+  enviar(){
+    alert('Entra al método de enviar');
+    let datos = new IncidenciaData(this.formularioAdd.controls['titulo'].value,this.formularioAdd.controls['descripcion'].value,
+    this.formularioAdd.controls['prioridad'].value);
+    let existe = true;
+    let id;
+    while(existe){
+      alert('Dentro del bucle');
+      id = (Math.random()*1000000).toString();
+      for(let i of this.listaI){
+        if(i.id != id){
+          existe=false;
+        }
+      }
+    }
+    alert('Sale del bucle');
+    let inci = new Incidencia(id, datos);
+    //return inci; 
+    this.incidenciaServicio.createPolicy(inci);
   }
 
 }
