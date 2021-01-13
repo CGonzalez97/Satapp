@@ -7,4 +7,5 @@ export class IncidenciaData {
     title:string;
     description:string;
     priority:number;
+    created:Date
 }

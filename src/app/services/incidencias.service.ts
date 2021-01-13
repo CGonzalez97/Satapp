@@ -11,7 +11,11 @@ export class IncidenciasService {
 
   getIncidencias() {
     return this.firestore.collection('incidencias').snapshotChanges();
-}
+  }
+
+  createPolicy(incidencia: Incidencia){
+    return this.firestore.collection('incidencias').add(incidencia);
+  }
 
 
 }

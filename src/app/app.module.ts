@@ -12,6 +12,8 @@ import { ListaIncidenciasComponent } from './componentes/lista-incidencias/lista
 import {IncidenciasService} from './services/incidencias.service';
 import {Incidencia,IncidenciaData} from './models/incidencia.model';
 
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +25,7 @@ import {Incidencia,IncidenciaData} from './models/incidencia.model';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    ListaIncidenciasComponent,
-    Incidencia,
-    IncidenciaData
+    MatTableModule
   ],
   providers: [IncidenciasService],
   bootstrap: [AppComponent]

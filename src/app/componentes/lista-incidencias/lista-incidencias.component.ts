@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidenciasService } from '../../services/incidencias.service';
 import { Incidencia,IncidenciaData } from '../../models/incidencia.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-lista-incidencias',
@@ -9,13 +10,15 @@ import { Incidencia,IncidenciaData } from '../../models/incidencia.model';
 })
 export class ListaIncidenciasComponent implements OnInit {
 
-  incidencias:Incidencia[];
+  
+  incidencias=new MatTableDataSource();//Incidencia[];
+  displayedColumns: string[] = ['id','descripcion','creado','prioridad','titulo'];
 
   constructor(private incidenciaService:IncidenciasService) { }
 
   ngOnInit(): void {
     this.incidenciaService.getIncidencias().subscribe(data => {
-      this.incidencias = data.map(e => {
+      this.incidencias.data = data.map(e => {
         return {
           id: e.payload.doc.id,
           data:e.payload.doc.data()
