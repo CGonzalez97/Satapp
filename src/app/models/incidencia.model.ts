@@ -8,11 +8,27 @@ export class Incidencia {
 }
 
 export class IncidenciaData {
-    title:string;
-    description:string;
-    priority:number;
     created: Date;
+    description:string;      
+    priority:number;
+    title:string;  
+    
     constructor(title, description, priority){
+        this.title= title;
+        this.description= description;
+        this.priority= priority;
+        this.created= new Date();
+    }
+}
+export class IncidenciaEnviar{
+    //id:string;
+    created: Date;
+    description:string;      
+    priority:number;
+    title:string; 
+    
+    constructor(/*id,*/title, description, priority){
+        //this.id=id;
         this.title= title;
         this.description= description;
         this.priority= priority;

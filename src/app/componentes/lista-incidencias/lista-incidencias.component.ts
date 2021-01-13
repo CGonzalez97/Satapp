@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidenciasService } from '../../services/incidencias.service';
-import { Incidencia,IncidenciaData } from '../../models/incidencia.model';
+import { Incidencia,IncidenciaData, IncidenciaEnviar } from '../../models/incidencia.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogAnyadirComponent } from '../dialog-anyadir/dialog-anyadir.component';
@@ -36,6 +36,10 @@ export class ListaIncidenciasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  create(incidencia: IncidenciaEnviar){
+    this.incidenciaService.createIncidencia(incidencia);
   }
 
 }

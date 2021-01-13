@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Incidencia,IncidenciaData } from '../../models/incidencia.model';
+import { Incidencia,IncidenciaData, IncidenciaEnviar } from '../../models/incidencia.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IncidenciasService } from '../../services/incidencias.service';
 
@@ -30,9 +30,9 @@ export class DialogAnyadirComponent implements OnInit {
 
   enviar(){
     alert('Entra al método de enviar');
-    let datos = new IncidenciaData(this.formularioAdd.controls['titulo'].value,this.formularioAdd.controls['descripcion'].value,
-    this.formularioAdd.controls['prioridad'].value);
-    let existe = true;
+    /*let datos = new IncidenciaData(this.formularioAdd.controls['titulo'].value,this.formularioAdd.controls['descripcion'].value,
+    this.formularioAdd.controls['prioridad'].value);*/
+    /*let existe = true;
     let id;
     while(existe){
       alert('Dentro del bucle');
@@ -43,10 +43,11 @@ export class DialogAnyadirComponent implements OnInit {
         }
       }
     }
-    alert('Sale del bucle');
-    let inci = new Incidencia(id, datos);
-    //return inci; 
-    this.incidenciaServicio.createPolicy(inci);
+    alert('Sale del bucle');*/
+    //let inci = new Incidencia(id, datos);
+    let incidenciaEnviar=new IncidenciaEnviar(/*id,*/ this.formularioAdd.controls['titulo'].value,this.formularioAdd.controls['descripcion'].value,
+    this.formularioAdd.controls['prioridad'].value);
+    this.incidenciaServicio.createIncidencia(/*inci*/incidenciaEnviar);
   }
 
 }
