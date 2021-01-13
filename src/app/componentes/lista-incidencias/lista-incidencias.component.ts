@@ -38,8 +38,6 @@ export class ListaIncidenciasComponent implements OnInit {
     });
   }
 
-  create(incidencia: IncidenciaEnviar){
-    this.incidenciaService.createIncidencia(incidencia);
-  }
+  
 
 }

@@ -1,8 +1,8 @@
 export class Incidencia {
     id:string;
     data:IncidenciaData;
-    constructor(id, data){
-        this.id=id;
+    constructor(/*id,*/ data){
+        //this.id=id;
         this.data = data;
     }
 }
