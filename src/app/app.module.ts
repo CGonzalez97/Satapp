@@ -13,19 +13,33 @@ import {IncidenciasService} from './services/incidencias.service';
 import {Incidencia,IncidenciaData} from './models/incidencia.model';
 
 import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogAnyadirComponent } from './componentes/dialog-anyadir/dialog-anyadir.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaIncidenciasComponent
+    ListaIncidenciasComponent,
+    DialogAnyadirComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatInputModule 
   ],
   providers: [IncidenciasService],
   bootstrap: [AppComponent]

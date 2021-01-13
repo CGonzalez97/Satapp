@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IncidenciasService } from '../../services/incidencias.service';
 import { Incidencia,IncidenciaData } from '../../models/incidencia.model';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogAnyadirComponent } from '../dialog-anyadir/dialog-anyadir.component';
 
 @Component({
   selector: 'app-lista-incidencias',
@@ -14,7 +16,7 @@ export class ListaIncidenciasComponent implements OnInit {
   incidencias=new MatTableDataSource();//Incidencia[];
   displayedColumns: string[] = ['id','descripcion','creado','prioridad','titulo'];
 
-  constructor(private incidenciaService:IncidenciasService) { }
+  constructor(private incidenciaService:IncidenciasService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.incidenciaService.getIncidencias().subscribe(data => {
@@ -24,6 +26,14 @@ export class ListaIncidenciasComponent implements OnInit {
           data:e.payload.doc.data()
         } as Incidencia;
       })
+    });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogAnyadirComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 
