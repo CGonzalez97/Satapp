@@ -18,5 +18,9 @@ export class IncidenciasService {
     return this.firestore.collection('incidencias').add(incidencia);    
   }
 
+  deleteIncidencia(id:String){
+    this.firestore.doc('incidencias/' + id).delete();
+  }
+
 
 }

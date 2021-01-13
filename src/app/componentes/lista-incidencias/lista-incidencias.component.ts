@@ -14,7 +14,7 @@ export class ListaIncidenciasComponent implements OnInit {
 
   
   incidencias=new MatTableDataSource();//Incidencia[];
-  displayedColumns: string[] = ['id','descripcion','creado','prioridad','titulo'];
+  displayedColumns: string[] = ['id','descripcion','creado','prioridad','titulo','borrar'];
 
   constructor(private incidenciaService:IncidenciasService, public dialog: MatDialog) { }
 
@@ -36,6 +36,10 @@ export class ListaIncidenciasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  delete(id: string) {
+    this.incidenciaService.deleteIncidencia(id);
   }
 
   
