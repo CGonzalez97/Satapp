@@ -22,5 +22,8 @@ export class IncidenciasService {
     this.firestore.doc('incidencias/' + id).delete();
   }
 
-
+  updateIncidencia(incidencia: Incidencia){
+    delete incidencia.id;
+    this.firestore.doc('incidencias/' + incidencia.id).update(incidencia);
+  }
 }

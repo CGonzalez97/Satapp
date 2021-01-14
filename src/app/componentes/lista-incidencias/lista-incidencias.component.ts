@@ -4,6 +4,7 @@ import { Incidencia,IncidenciaData, IncidenciaEnviar } from '../../models/incide
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogAnyadirComponent } from '../dialog-anyadir/dialog-anyadir.component';
+import { DialogEditarComponent } from '../dialog-editar/dialog-editar.component';
 
 @Component({
   selector: 'app-lista-incidencias',
@@ -14,7 +15,7 @@ export class ListaIncidenciasComponent implements OnInit {
 
   
   incidencias=new MatTableDataSource();//Incidencia[];
-  displayedColumns: string[] = ['id','descripcion','creado','prioridad','titulo','borrar'];
+  displayedColumns: string[] = ['id','descripcion','creado','prioridad','titulo','borrar','editar'];
 
   constructor(private incidenciaService:IncidenciasService, public dialog: MatDialog) { }
 
@@ -33,6 +34,13 @@ export class ListaIncidenciasComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogAnyadirComponent);
     dialogRef.componentInstance.listaI = this.incidencias.data;
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openDialogEditar(incidencia:Incidencia){
+    const dialogRef = this.dialog.open(DialogEditarComponent,{data: {incidencia}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
