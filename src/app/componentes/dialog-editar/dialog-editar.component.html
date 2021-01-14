@@ -9,7 +9,7 @@
         <br>
         <mat-form-field appearance="fill">
             <mat-label>Prioridad</mat-label>
-            <mat-select matInput  [formControlName]="'prioridad'">
+            <mat-select matInput  [formControlName]="'prioridad'" [value]='this.data.incidencia.data.priority'>
               <mat-option value="0">0</mat-option>
               <mat-option value="1">1</mat-option>
               <mat-option value="2">2</mat-option>
